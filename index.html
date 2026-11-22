@@ -72,7 +72,6 @@
             pointer-events: none;
         }
 
-        /* Dark Room Overlay (Lifts when lamp turns ON) */
         .dark-room-veil {
             position: absolute;
             inset: 0;
@@ -86,7 +85,6 @@
             opacity: 0;
         }
 
-        /* Warm Golden Lamp Cone Light */
         .lamp-light-cone {
             position: absolute;
             top: 0;
@@ -107,7 +105,6 @@
             transform: scale(1);
         }
 
-        /* Hanging Vintage Lamp Widget */
         .lamp-fixture {
             position: absolute;
             top: 0;
@@ -164,7 +161,6 @@
             box-shadow: 0 0 25px #FFE885, 0 0 55px #D4AF37, 0 0 90px #FFAE00;
         }
 
-        /* Pull Chain / Handle */
         .pull-chain-area {
             position: absolute;
             top: 58px;
@@ -209,7 +205,6 @@
             50% { transform: rotate(4deg); }
         }
 
-        /* Stylish Silk Ribbon Bands */
         .silk-ribbon-band {
             position: absolute;
             top: 50%;
@@ -261,7 +256,6 @@
             transform: translate(115%, -50%) rotate(6deg);
         }
 
-        /* Center Royal Silk Bow */
         .bow-wrapper {
             position: relative;
             z-index: 3;
@@ -372,14 +366,13 @@
             color: #14121D;
         }
 
-        /* Gold Gradient Text */
-      .gold-text-gradient {
+        .gold-text-gradient {
     background: linear-gradient(135deg, #FFFDF9 0%, #F5E6AD 25%, #D4AF37 60%, #AA771C 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-        /* Glassmorphism Luxury Border */
+
         .luxury-card {
             background: rgba(20, 18, 29, 0.65);
             backdrop-filter: blur(16px);
@@ -504,17 +497,12 @@ mask-composite: exclude;
 
     <!-- ================= VINTAGE LAMP + SILK RIBBON CURTAIN ================= -->
     <div id="knotCurtain" aria-label="Pull the lamp chain to turn on the light, then untie the ribbon">
-        <!-- Dark Room Veil -->
         <div class="dark-room-veil"></div>
-
-        <!-- Lamp Warm Light Cone -->
         <div class="lamp-light-cone"></div>
 
-        <!-- Hanging Vintage Lamp with Pull Chain -->
         <div class="lamp-fixture">
             <div class="lamp-cord"></div>
             <div class="lamp-shade">
-                <!-- Pull Chain Handle -->
                 <div id="lampPullChain" class="pull-chain-area" title="Pull down the handle to switch on the lamp">
                     <div id="chainLinks" class="chain-links"></div>
                     <div class="chain-handle"></div>
@@ -526,11 +514,9 @@ mask-composite: exclude;
             <div class="lamp-bulb"></div>
         </div>
 
-        <!-- Horizontal Silk Ribbon Bands -->
         <div class="silk-ribbon-band ribbon-left"></div>
         <div class="silk-ribbon-band ribbon-right"></div>
 
-        <!-- Stylish Silk Bow in Center -->
         <div class="bow-wrapper text-center px-6">
             <div class="text-xs uppercase tracking-[0.3em] text-gold-300/90 mb-3 font-semibold drop-shadow">
                 Royal Gift For Dipan
@@ -559,7 +545,7 @@ mask-composite: exclude;
     <!-- Canvas for Flower & Petal Shower Engine -->
     <canvas id="flowerShowerCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
 
-    <!-- Floating Audio & Soundtrack Controller (Top-Right Header Controls) -->
+    <!-- Floating Audio & Soundtrack Controller -->
     <nav class="fixed top-4 right-4 sm:top-6 sm:right-6 z-40 flex items-center space-x-3">
         <button id="bgMusicToggle" class="px-4 py-2 rounded-full luxury-card text-xs sm:text-sm font-semibold flex items-center gap-2 hover:bg-gold-500/20 text-gold-200 transition-all">
             <i class="fa-solid fa-music text-gold-500 animate-pulse" id="musicIcon"></i>
@@ -573,7 +559,7 @@ mask-composite: exclude;
         <!-- ================= HERO SECTION ================= -->
         <header class="text-center py-8 sm:py-16 relative">
             <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full luxury-card text-gold-300 text-xs sm:text-sm font-semibold mb-6 tracking-widest uppercase border border-gold-500/40 shadow-lg">
-                <i class="fa-solid fa-crown text-gold-500"></i> Royal Birthday Celebration <i class="fa-solid fa-crown text-gold-500"></i>
+                <i class="fa-solid fa-crown text-gold-500"></i> Royal Birthday Celebration • 25 November <i class="fa-solid fa-crown text-gold-500"></i>
             </div>
 
             <h1 class="text-3xl sm:text-5xl lg:text-7xl font-cinzel font-black tracking-wider text-white mb-2 drop-shadow-md">
@@ -592,16 +578,11 @@ mask-composite: exclude;
                     <div class="flex items-center justify-between border-b border-gold-500/20 pb-4 mb-6">
                         <div class="flex items-center gap-2 text-gold-300 font-semibold text-xs sm:text-sm uppercase tracking-wider">
                             <i class="fa-solid fa-hourglass-half text-gold-400 animate-spin" style="animation-duration: 8s;"></i>
-                            <span>Birthday Countdown Timer</span>
+                            <span>Birthday Countdown Timer • 25 November</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <button id="openDateModalBtn" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/5 border border-gold-500/30 hover:bg-gold-500/20 text-gold-300 transition flex items-center gap-1.5" title="Customize Target Birthday Date">
-                                <i class="fa-solid fa-gear text-gold-400"></i> Set Date
-                            </button>
-                            <button id="triggerNowBtn" class="px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-gold-500 to-amber-600 text-midnight hover:brightness-110 transition flex items-center gap-1.5 shadow-md">
-                                <i class="fa-solid fa-bolt"></i> Celebrate Now!
-                            </button>
-                        </div>
+                        <button id="triggerNowBtn" class="px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-gold-500 to-amber-600 text-midnight hover:brightness-110 transition flex items-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-bolt"></i> Celebrate Now!
+                        </button>
                     </div>
 
                     <div id="countdownDisplay" class="grid grid-cols-4 gap-3 sm:gap-6 text-center">
@@ -625,7 +606,7 @@ mask-composite: exclude;
 
                     <div class="mt-4 text-center">
                         <p id="targetDateLabel" class="text-xs text-gold-400/80 font-mono tracking-wide">
-                            Counting down to Dipan's Royal Celebration
+                            Counting down to Dipan's Birthday on 25 November
                         </p>
                     </div>
                 </div>
@@ -833,37 +814,6 @@ mask-composite: exclude;
         </button>
     </div>
 
-    <!-- ================= TARGET DATE CUSTOMIZER MODAL ================= -->
-    <div id="dateModal" class="fixed inset-0 z-50 bg-midnight/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
-        <div class="luxury-card rounded-2xl max-w-md w-full p-6 gold-border-glow border border-gold-500/40 relative">
-            <button id="closeDateModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <div class="text-center mb-6">
-                <div class="w-12 h-12 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center mx-auto mb-2 text-xl">
-                    <i class="fa-solid fa-calendar-days"></i>
-                </div>
-                <h4 class="text-xl font-bold text-white">Set Target Birthday Date</h4>
-                <p class="text-xs text-gold-300/80 mt-1">Select the date and time for Dipan's celebration countdown</p>
-            </div>
-            
-            <form id="dateForm" class="space-y-4">
-                <div>
-                    <label class="block text-xs text-gold-200 font-semibold mb-1">Birthday Date & Time</label>
-                    <input type="datetime-local" id="targetDateInput" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-gold-500/30 text-white focus:outline-none focus:border-gold-500 text-sm">
-                </div>
-                <div class="flex items-center gap-3 pt-2">
-                    <button type="button" id="resetDefaultDateBtn" class="w-1/2 py-2.5 rounded-xl border border-gold-500/30 text-gold-300 hover:bg-gold-500/10 font-semibold text-xs transition">
-                        Reset Default
-                    </button>
-                    <button type="submit" class="w-1/2 py-2.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-midnight font-bold text-xs hover:brightness-110 transition shadow-lg">
-                        Save Countdown
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <!-- ================= LUXURY LIGHTBOX MODAL ================= -->
     <div id="lightboxModal" class="fixed inset-0 z-50 bg-midnight/95 backdrop-blur-2xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
         <div class="relative max-w-4xl w-full flex flex-col items-center">
@@ -960,7 +910,7 @@ mask-composite: exclude;
 
             ctx.fillStyle = 'rgba(243, 229, 171, 0.7)';
             ctx.font = '18px "Plus Jakarta Sans", sans-serif';
-            ctx.fillText('Dipan Birthday Special', 300, 490);
+            ctx.fillText('Dipan Birthday Special • Nov 25', 300, 490);
 
             ctx.fillStyle = 'rgba(212, 175, 55, 0.5)';
             ctx.font = '14px monospace';
@@ -1098,16 +1048,14 @@ mask-composite: exclude;
         let targetBirthdayDate = null;
         let countdownInterval = null;
 
-        function getDefaultTargetDate() {
+        function getNextNov25Date() {
             const now = new Date();
-            const saved = localStorage.getItem('dipan_birthday_target');
-            if (saved) {
-                return new Date(saved);
+            // November is month index 10, Day 25 at 00:00:00
+            let candidate = new Date(now.getFullYear(), 10, 25, 0, 0, 0, 0);
+            if (now.getTime() > candidate.getTime()) {
+                candidate = new Date(now.getFullYear() + 1, 10, 25, 0, 0, 0, 0);
             }
-            const tomorrow = new Date(now);
-            tomorrow.setDate(now.getDate() + 1);
-            tomorrow.setHours(0, 0, 0, 0);
-            return tomorrow;
+            return candidate;
         }
 
         function updateCountdownDisplay() {
@@ -1131,7 +1079,7 @@ mask-composite: exclude;
                 if (!window.celebratedTriggered) {
                     window.celebratedTriggered = true;
                     triggerFlowerShower(160);
-                    showToast("🎉 IT'S DIPAN'S BIRTHDAY! CELEBRATE NOW! 🎉", "🎂");
+                    showToast("🎉 IT'S DIPAN'S BIRTHDAY (NOV 25)! CELEBRATE NOW! 🎉", "🎂");
                 }
                 return;
             }
@@ -1148,7 +1096,7 @@ mask-composite: exclude;
         }
 
         function startCountdown() {
-            targetBirthdayDate = getDefaultTargetDate();
+            targetBirthdayDate = getNextNov25Date();
             if (countdownInterval) clearInterval(countdownInterval);
             updateCountdownDisplay();
             countdownInterval = setInterval(updateCountdownDisplay, 1000);
@@ -1293,7 +1241,6 @@ mask-composite: exclude;
                 resizeFlowerCanvas();
             });
 
-            // LAMP PULL-CHAIN & SILK RIBBON SEQUENCE
             const knotCurtain = document.getElementById('knotCurtain');
             const lampPullChain = document.getElementById('lampPullChain');
             const chainLinks = document.getElementById('chainLinks');
@@ -1311,7 +1258,6 @@ mask-composite: exclude;
                 getAudioContext();
                 playSwitchClickSound();
 
-                // Pull animation on chain
                 chainLinks.style.height = '96px';
                 setTimeout(() => {
                     chainLinks.style.height = '68px';
@@ -1323,7 +1269,6 @@ mask-composite: exclude;
                 curtainPrompt.textContent = 'Now tap the royal silk bow to untie the ribbon 🎀';
             }
 
-            // Support both downward drag and direct tap/click on the pull handle
             lampPullChain.addEventListener('pointerdown', (e) => {
                 startY = e.clientY;
                 chainLinks.style.height = '92px';
@@ -1360,7 +1305,7 @@ mask-composite: exclude;
 
                 setTimeout(() => {
                     knotCurtain.classList.add('unlocked');
-                    showToast("🎀 Ribbon untied! Happy Birthday Dipan!", "🎉");
+                    showToast("🎀 Ribbon untied! Happy Birthday Dipan (Nov 25)!", "🎉");
                 }, 800);
             }
 
@@ -1369,59 +1314,15 @@ mask-composite: exclude;
                 unlockCelebration();
             });
 
-            // FLOATING FLOWER SHOWER FAB CLICK
             document.getElementById('flowerShowerBtn').addEventListener('click', () => {
                 triggerFlowerShower(140);
             });
 
-            // COUNTDOWN CELEBRATE NOW BUTTON
             document.getElementById('triggerNowBtn').addEventListener('click', () => {
                 triggerFlowerShower(150);
                 showToast("🥳 Celebration mode activated for Dipan!", "🎉");
             });
 
-            // COUNTDOWN DATE MODAL HANDLERS
-            const dateModal = document.getElementById('dateModal');
-            const openDateModalBtn = document.getElementById('openDateModalBtn');
-            const closeDateModalBtn = document.getElementById('closeDateModalBtn');
-            const dateForm = document.getElementById('dateForm');
-            const targetDateInput = document.getElementById('targetDateInput');
-            const resetDefaultDateBtn = document.getElementById('resetDefaultDateBtn');
-
-            openDateModalBtn.addEventListener('click', () => {
-                const tzOffset = targetBirthdayDate.getTimezoneOffset() * 60000;
-                const localISOTime = (new Date(targetBirthdayDate.getTime() - tzOffset)).toISOString().slice(0, 16);
-                targetDateInput.value = localISOTime;
-                dateModal.classList.remove('opacity-0', 'pointer-events-none');
-            });
-
-            closeDateModalBtn.addEventListener('click', () => {
-                dateModal.classList.add('opacity-0', 'pointer-events-none');
-            });
-
-            dateForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const selected = new Date(targetDateInput.value);
-                if (selected && !isNaN(selected.getTime())) {
-                    targetBirthdayDate = selected;
-                    localStorage.setItem('dipan_birthday_target', selected.toISOString());
-                    window.celebratedTriggered = false;
-                    updateCountdownDisplay();
-                    dateModal.classList.add('opacity-0', 'pointer-events-none');
-                    showToast("📅 Target birthday date updated successfully!", "⏳");
-                }
-            });
-
-            resetDefaultDateBtn.addEventListener('click', () => {
-                localStorage.removeItem('dipan_birthday_target');
-                targetBirthdayDate = getDefaultTargetDate();
-                window.celebratedTriggered = false;
-                updateCountdownDisplay();
-                dateModal.classList.add('opacity-0', 'pointer-events-none');
-                showToast("🔄 Reset to default birthday timer");
-            });
-
-            // CANDLE BLOW ACTION
             const cakeContainer = document.getElementById('cakeContainer');
             const blowCandleBtn = document.getElementById('blowCandleBtn');
             
@@ -1441,7 +1342,6 @@ mask-composite: exclude;
             cakeContainer.addEventListener('click', blowOutCandle);
             blowCandleBtn.addEventListener('click', blowOutCandle);
 
-            // MUSIC TOGGLE
             const bgMusicToggle = document.getElementById('bgMusicToggle');
             const musicText = document.getElementById('musicText');
             
@@ -1459,7 +1359,6 @@ mask-composite: exclude;
                 }
             });
 
-            // ALBUM CARD CLICKS FOR LIGHTBOX
             document.querySelectorAll('.album-card').forEach(card => {
                 card.addEventListener('click', () => {
                     const idx = parseInt(card.getAttribute('data-index'), 10);
@@ -1477,7 +1376,6 @@ mask-composite: exclude;
                 openLightbox(currentImgIdx);
             });
 
-            // GALLERY VIEW MODE TOGGLES
             const galleryContainer = document.getElementById('galleryContainer');
             const viewGridBtn = document.getElementById('viewGridBtn');
             const view3dBtn = document.getElementById('view3dBtn');
@@ -1509,7 +1407,6 @@ mask-composite: exclude;
                 showToast("📖 Scrapbook View activated");
             });
 
-            // WISH FORM SUBMISSION WITH WHATSAPP SEND
             const wishForm = document.getElementById('wishForm');
             const WHATSAPP_NUMBER = '91XXXXXXXXXX'; // <-- এখানে আপনার WhatsApp নম্বর দিন
 
@@ -1547,7 +1444,7 @@ mask-composite: exclude;
 
                 wishesGrid.prepend(newCard);
 
-                const waMessage = `🎉 *Birthday Wish for Dipan* 🎉\n\n*From:* ${name} (${relation})\n*Message:* ${text}`;
+                const waMessage = `🎉 *Birthday Wish for Dipan (Nov 25)* 🎉\n\n*From:* ${name} (${relation})\n*Message:* ${text}`;
                 const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
                 window.open(waUrl, '_blank', 'noopener,noreferrer');
 
