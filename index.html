@@ -366,12 +366,172 @@
             color: #14121D;
         }
 
+        /* ================= OPEN BOOK ALBUM & PAPER FOLD CURL ================= */
+        .open-book-shell {
+            background: linear-gradient(145deg, #2b1710 0%, #170c08 100%);
+            border: 2px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.16);
+        }
+
+        .book-spread {
+            perspective: 2200px;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .book-page-left {
+            background: linear-gradient(to left, #d8c79f 0%, #f5ebd2 8%, #fbf4e4 100%);
+            color: #1f1712;
+            box-shadow: inset -20px 0 30px -18px rgba(0, 0, 0, 0.48);
+            border-radius: 12px 2px 2px 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .book-page-right {
+            background: linear-gradient(to right, #d8c79f 0%, #f5ebd2 8%, #fbf4e4 100%);
+            color: #1f1712;
+            box-shadow: inset 20px 0 30px -18px rgba(0, 0, 0, 0.48);
+            border-radius: 2px 12px 12px 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .book-spine {
+            background: linear-gradient(to right, rgba(45, 22, 12, 0.55), rgba(212, 175, 55, 0.35), rgba(45, 22, 12, 0.55));
+        }
+
+        .page-corner-fold {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 54px;
+            height: 54px;
+            z-index: 15;
+            cursor: pointer;
+            background: linear-gradient(
+                135deg,
+                transparent 46%,
+                rgba(130, 102, 58, 0.32) 49%,
+                #ebdcb8 52%,
+                #fffaf0 74%,
+                #c7b082 100%
+            );
+            border-top-left-radius: 16px;
+            box-shadow: -4px -4px 12px rgba(0, 0, 0, 0.25);
+            transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .book-page-right:hover .page-corner-fold {
+            width: 78px;
+            height: 78px;
+        }
+
+        .turning-sheet {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            z-index: 25;
+            pointer-events: none;
+            opacity: 0;
+            transform-style: preserve-3d;
+            background: linear-gradient(
+                125deg,
+                #fbf4e4 0%,
+                #efe1c0 45%,
+                #cbb386 78%,
+                #f8f0dc 100%
+            );
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), inset 0 0 24px rgba(92, 64, 24, 0.22);
+        }
+
+        .turning-sheet.turn-forward {
+            left: 50%;
+            transform-origin: left center;
+            border-radius: 0 12px 12px 0;
+            animation: sheetFoldForward 0.78s cubic-bezier(0.35, 0.05, 0.2, 1) forwards;
+        }
+
+        .turning-sheet.turn-backward {
+            left: 0;
+            transform-origin: right center;
+            border-radius: 12px 0 0 12px;
+            animation: sheetFoldBackward 0.78s cubic-bezier(0.35, 0.05, 0.2, 1) forwards;
+        }
+
+        @keyframes sheetFoldForward {
+            0% {
+                opacity: 0.96;
+                transform: rotateY(0deg) skewY(0deg);
+            }
+            45% {
+                opacity: 1;
+                transform: rotateY(-88deg) skewY(-5deg);
+            }
+            55% {
+                opacity: 1;
+                transform: rotateY(-95deg) skewY(4deg);
+            }
+            100% {
+                opacity: 0;
+                transform: rotateY(-178deg) skewY(0deg);
+            }
+        }
+
+        @keyframes sheetFoldBackward {
+            0% {
+                opacity: 0.96;
+                transform: rotateY(0deg) skewY(0deg);
+            }
+            45% {
+                opacity: 1;
+                transform: rotateY(88deg) skewY(5deg);
+            }
+            55% {
+                opacity: 1;
+                transform: rotateY(95deg) skewY(-4deg);
+            }
+            100% {
+                opacity: 0;
+                transform: rotateY(178deg) skewY(0deg);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .turning-sheet.turn-forward,
+            .turning-sheet.turn-backward {
+                left: 0;
+                top: 50%;
+                width: 100%;
+                height: 50%;
+                transform-origin: top center;
+                border-radius: 0 0 12px 12px;
+                animation: sheetFoldMobile 0.72s cubic-bezier(0.35, 0.05, 0.2, 1) forwards;
+            }
+
+            @keyframes sheetFoldMobile {
+                0% {
+                    opacity: 0.95;
+                    transform: rotateX(0deg);
+                }
+                50% {
+                    opacity: 1;
+                    transform: rotateX(-75deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: rotateX(0deg);
+                }
+            }
+        }
+
         .gold-text-gradient {
-    background: linear-gradient(135deg, #FFFDF9 0%, #F5E6AD 25%, #D4AF37 60%, #AA771C 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+            background: linear-gradient(135deg, #FFFDF9 0%, #F5E6AD 25%, #D4AF37 60%, #AA771C 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         .luxury-card {
             background: rgba(20, 18, 29, 0.65);
@@ -397,10 +557,11 @@
             border-radius: inherit;
             padding: 2px;
             background: linear-gradient(135deg, #D4AF37, transparent 40%, transparent 60%, #F5E6AD);
-           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
--webkit-mask-composite: xor;
-mask-composite: exclude;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
         @keyframes pulseGlow {
@@ -420,28 +581,6 @@ mask-composite: exclude;
 
         .fab-wobble {
             animation: floatWobble 3s ease-in-out infinite;
-        }
-
-        .shimmer-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .shimmer-card::after {
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            transform: translateX(-100%);
-            background-image: linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0) 0,
-                rgba(255, 255, 255, 0.15) 20%,
-                rgba(212, 175, 55, 0.35) 60%,
-                rgba(255, 255, 255, 0)
-            );
-            content: '';
-            transition: transform 0.8s ease-in-out;
-        }
-        .shimmer-card:hover::after {
-            transform: translateX(100%);
         }
 
         .flame {
@@ -681,132 +820,107 @@ mask-composite: exclude;
             </div>
         </section>
 
-        <!-- ================= LUXURY MEMORY ALBUM SECTION ================= -->
+        <!-- ================= OPEN BOOK PHOTO ALBUM SECTION ================= -->
         <section class="my-16 sm:my-24">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
                     <div class="text-gold-400 font-semibold text-xs tracking-widest uppercase flex items-center gap-2">
-                        <i class="fa-solid fa-gem text-gold-500"></i> Premium Photo Showcase
+                        <i class="fa-solid fa-book-open text-gold-500"></i> Interactive Storybook Album
                     </div>
                     <h3 class="text-3xl sm:text-5xl font-sans font-bold text-white mt-1">
-                        Royal Memory Album
+                        Dipan's Birthday Book
                     </h3>
                 </div>
 
-                <div class="flex items-center gap-2 p-1.5 rounded-full luxury-card self-start border border-gold-500/30">
-                    <button id="viewGridBtn" class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-gold-500 text-midnight shadow">
-                        <i class="fa-solid fa-border-all mr-1"></i> Grid View
-                    </button>
-                    <button id="view3dBtn" class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-gold-300 hover:text-white transition-all">
-                        <i class="fa-solid fa-cube mr-1"></i> 3D Showcase
-                    </button>
-                    <button id="viewScrapbookBtn" class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-gold-300 hover:text-white transition-all">
-                        <i class="fa-solid fa-book-open mr-1"></i> Scrapbook
-                    </button>
+                <div class="flex items-center gap-3 px-4 py-2 rounded-full luxury-card border border-gold-500/30 self-start">
+                    <div id="bookDots" class="flex items-center gap-2"></div>
+                    <span id="bookPageIndicator" class="text-xs font-mono text-gold-300">Page 1 of 4</span>
                 </div>
             </div>
 
-            <div id="galleryContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
-                <div class="album-card group cursor-pointer luxury-card rounded-2xl p-3 gold-border-glow shimmer-card transition-all duration-300" data-index="0">
-                    <div class="relative overflow-hidden rounded-xl aspect-[3/4] bg-midnight flex items-center justify-center">
-                        <img src="./Dipan-1.png" alt="Dipan Royal Silhouette" class="album-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                             onerror="renderFallbackSVG(this, 'Royal Silhouette', './Dipan-1.png')">
-                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute bottom-3 left-3 right-3 text-left">
-                            <span class="px-2.5 py-0.5 rounded-full bg-gold-500/80 text-midnight font-bold text-[10px] uppercase">Memory #01</span>
-                            <h4 class="text-white font-sans font-bold text-lg mt-1 group-hover:text-gold-300 transition-colors">Royal Silhouette</h4>
-                            <p class="text-xs text-gold-200/80 font-light truncate">Radiant presence & timeless confidence</p>
-                        </div>
-                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-midnight/60 backdrop-blur border border-gold-500/40 flex items-center justify-center text-gold-300 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-expand text-xs"></i>
-                        </div>
-                    </div>
-                </div>
+            <!-- Open Book Frame -->
+            <div class="open-book-shell rounded-3xl p-3 sm:p-6">
+                <div id="bookSpread" class="book-spread grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden relative min-h-[460px] sm:min-h-[520px]">
+                    
+                    <!-- Center Book Spine Shadow -->
+                    <div class="hidden md:block book-spine absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-5 z-20 pointer-events-none"></div>
 
-                <div class="album-card group cursor-pointer luxury-card rounded-2xl p-3 gold-border-glow shimmer-card transition-all duration-300" data-index="1">
-                    <div class="relative overflow-hidden rounded-xl aspect-[3/4] bg-midnight flex items-center justify-center">
-                        <img src="./Dipan-2.png" alt="Dipan Vibrant Smiles" class="album-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                             onerror="renderFallbackSVG(this, 'Vibrant Smiles', './Dipan-2.png')">
-                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute bottom-3 left-3 right-3 text-left">
-                            <span class="px-2.5 py-0.5 rounded-full bg-gold-500/80 text-midnight font-bold text-[10px] uppercase">Memory #02</span>
-                            <h4 class="text-white font-sans font-bold text-lg mt-1 group-hover:text-gold-300 transition-colors">Vibrant Smiles</h4>
-                            <p class="text-xs text-gold-200/80 font-light truncate">The heart & soul of every gathering</p>
-                        </div>
-                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-midnight/60 backdrop-blur border border-gold-500/40 flex items-center justify-center text-gold-300 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-expand text-xs"></i>
-                        </div>
-                    </div>
-                </div>
+                    <!-- Folding Sheet Animation Overlay -->
+                    <div id="turningSheet" class="turning-sheet"></div>
 
-                <div class="album-card group cursor-pointer luxury-card rounded-2xl p-3 gold-border-glow shimmer-card transition-all duration-300" data-index="2">
-                    <div class="relative overflow-hidden rounded-xl aspect-[3/4] bg-midnight flex items-center justify-center">
-                        <img src="./Dipan-3.png" alt="Dipan Unforgettable Moments" class="album-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                             onerror="renderFallbackSVG(this, 'Unforgettable Moments', './Dipan-3.png')">
-                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute bottom-3 left-3 right-3 text-left">
-                            <span class="px-2.5 py-0.5 rounded-full bg-gold-500/80 text-midnight font-bold text-[10px] uppercase">Memory #03</span>
-                            <h4 class="text-white font-sans font-bold text-lg mt-1 group-hover:text-gold-300 transition-colors">Unforgettable Moments</h4>
-                            <p class="text-xs text-gold-200/80 font-light truncate">Golden memories captured in time</p>
-                        </div>
-                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-midnight/60 backdrop-blur border border-gold-500/40 flex items-center justify-center text-gold-300 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-expand text-xs"></i>
-                        </div>
-                    </div>
-                </div>
+                    <!-- LEFT PAGE: BIRTHDAY STORY / TEXT FOR THIS SPREAD -->
+                    <div class="book-page-left p-6 sm:p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-amber-900/20">
+                        <div>
+                            <div class="flex items-center justify-between text-xs uppercase tracking-widest text-amber-900/70 font-semibold border-b border-amber-900/15 pb-3">
+                                <span id="leftPageChapter">Chapter I • 25 November</span>
+                                <span id="leftPageNum">Page 01</span>
+                            </div>
 
-                <div class="album-card group cursor-pointer luxury-card rounded-2xl p-3 gold-border-glow shimmer-card transition-all duration-300" data-index="3">
-                    <div class="relative overflow-hidden rounded-xl aspect-[3/4] bg-midnight flex items-center justify-center">
-                        <img src="./Dipan-4.png" alt="Dipan Golden Horizons" class="album-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                             onerror="renderFallbackSVG(this, 'Golden Horizons', './Dipan-4.png')">
-                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute bottom-3 left-3 right-3 text-left">
-                            <span class="px-2.5 py-0.5 rounded-full bg-gold-500/80 text-midnight font-bold text-[10px] uppercase">Memory #04</span>
-                            <h4 class="text-white font-sans font-bold text-lg mt-1 group-hover:text-gold-300 transition-colors">Golden Horizons</h4>
-                            <p class="text-xs text-gold-200/80 font-light truncate">Stepping gracefully into a brilliant future</p>
+                            <h4 id="leftPageHeading" class="text-2xl sm:text-3xl font-playfair font-extrabold text-amber-950 mt-6 leading-snug">
+                                A Crown of Golden Light
+                            </h4>
+
+                            <p id="leftPageQuote" class="font-playfair italic text-sm sm:text-base text-amber-900/90 mt-3 border-l-2 border-amber-700 pl-3">
+                                “Every 25th of November brings a fresh chapter where your smile outshines the stars.”
+                            </p>
+
+                            <p id="leftPageBody" class="text-sm sm:text-base text-stone-800 leading-relaxed mt-5 font-sans">
+                                Happy Birthday Dipan! On this special day, may every dream you have nurtured quietly turn into reality. Your calm strength, genuine warmth, and fearless spirit make every moment around you memorable.
+                            </p>
                         </div>
-                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-midnight/60 backdrop-blur border border-gold-500/40 flex items-center justify-center text-gold-300 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-expand text-xs"></i>
+
+                        <div class="pt-6 mt-6 border-t border-amber-900/15 flex items-center justify-between text-xs text-amber-900/75 font-playfair italic">
+                            <span>With warm birthday wishes for Dipan</span>
+                            <span id="leftPageNote">25 Nov Special</span>
                         </div>
                     </div>
+
+                    <!-- RIGHT PAGE: PHOTO FOR THIS SPREAD -->
+                    <div class="book-page-right p-5 sm:p-8 flex flex-col justify-between">
+                        <div id="bookPhotoFrame" class="relative flex-1 rounded-xl overflow-hidden bg-midnight border-2 border-amber-900/30 shadow-xl cursor-pointer group flex items-center justify-center min-h-[300px]" title="Click to view full photo">
+                            <img id="bookPageImg" src="./Dipan-1.png" alt="Dipan Royal Silhouette" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                 onerror="renderFallbackSVG(this, 'Royal Silhouette', './Dipan-1.png')">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-white">
+                                <div>
+                                    <span id="bookPhotoBadge" class="px-2.5 py-0.5 rounded-full bg-gold-500 text-midnight font-bold text-[10px] uppercase">Photo #01</span>
+                                    <h5 id="bookPhotoTitle" class="text-lg font-bold mt-1">Royal Silhouette</h5>
+                                </div>
+                                <span class="w-9 h-9 rounded-full bg-black/60 border border-gold-400/50 flex items-center justify-center text-gold-200">
+                                    <i class="fa-solid fa-expand text-xs"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Corner Paper Fold -->
+                        <div id="cornerFoldTrigger" class="page-corner-fold" title="Fold & turn to next page"></div>
+
+                        <div class="mt-4 flex items-center justify-between gap-3 relative z-20">
+                            <button id="prevBookPageBtn" type="button" class="px-4 py-2.5 rounded-xl bg-amber-950 text-gold-200 hover:bg-amber-900 font-semibold text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer shadow">
+                                <i class="fa-solid fa-arrow-left"></i> Previous Page
+                            </button>
+
+                            <span id="rightPageNum" class="text-xs font-mono text-amber-900/70">1 / 4</span>
+
+                            <button id="nextBookPageBtn" type="button" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-700 to-amber-900 text-gold-100 hover:brightness-110 font-bold text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer shadow">
+                                Next Page <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </section>
-
-        <!-- ================= WISH WALL SECTION ================= -->
-        <section class="my-16">
-            <div class="text-center mb-10">
-                <h3 class="text-3xl sm:text-4xl font-sans font-bold text-white">
-                    Guestbook & Wish Wall <i class="fa-solid fa-paper-plane text-gold-400 text-2xl"></i>
-                </h3>
-                <p class="text-gold-200/80 text-sm mt-1">Leave a heartwarming birthday message for Dipan</p>
-            </div>
-
-            <div class="luxury-card rounded-2xl p-6 mb-8 gold-border-glow max-w-2xl mx-auto">
-                <form id="wishForm" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="senderName" required placeholder="Your Name..." class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-gold-500/30 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 text-sm">
-                        <input type="text" id="wishRelation" placeholder="Relationship (e.g., Best Friend, Brother...)" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-gold-500/30 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 text-sm">
-                    </div>
-                    <textarea id="wishText" required rows="3" placeholder="Write your heartfelt birthday message here..." class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-gold-500/30 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 text-sm"></textarea>
-                    <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-midnight font-bold text-sm hover:brightness-110 transition shadow-lg flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-base"></i> Send Wish on WhatsApp
-                    </button>
-                </form>
-            </div>
-
-            <div id="wishesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </section>
 
     </main>
 
-    <!-- ================= FLOATING FLOWER SHOWER FAB ================= -->
+    <!-- ================= FLOATING FLOWER BASKET ICON ================= -->
     <div class="fixed right-4 sm:right-6 bottom-8 z-40 flex flex-col items-end gap-2 group">
         <div class="luxury-card px-3 py-1.5 rounded-xl text-xs font-sans text-gold-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-xl border border-gold-500/40">
             🌸 Release Flower Shower!
         </div>
 
-        <button id="flowerShowerBtn" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-rose-600 via-amber-500 to-gold-400 text-midnight flex items-center justify-center shadow-2xl flower-fab-glow fab-wobble hover:scale-110 active:scale-95 transition-all border-2 border-amber-200">
+        <button id="flowerShowerBtn" type="button" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-rose-600 via-amber-500 to-gold-400 text-midnight flex items-center justify-center shadow-2xl flower-fab-glow fab-wobble hover:scale-110 active:scale-95 transition-all border-2 border-amber-200 cursor-pointer" title="Click to shower flowers">
             <div class="relative flex items-center justify-center">
                 <i class="fa-solid fa-basket-shopping text-xl sm:text-2xl text-midnight"></i>
                 <span class="absolute -top-2 -right-2 text-xs">🌸</span>
@@ -853,27 +967,55 @@ mask-composite: exclude;
         const galleryData = [
             {
                 src: './Dipan-1.png',
+                badge: 'Photo #01',
                 title: 'Royal Silhouette',
                 subtitle: 'Radiant presence & timeless confidence',
-                fallbackTitle: 'Royal Silhouette'
+                fallbackTitle: 'Royal Silhouette',
+                chapter: 'Chapter I • 25 November',
+                pageNo: 'Page 01',
+                heading: 'A Crown of Golden Light',
+                quote: '“Every 25th of November brings a fresh chapter where your smile outshines the stars.”',
+                body: 'Happy Birthday Dipan! On this special day, may every dream you have nurtured quietly turn into reality. Your calm strength, genuine warmth, and fearless spirit make every moment around you memorable.',
+                note: '25 Nov • Grand Opening'
             },
             {
                 src: './Dipan-2.png',
+                badge: 'Photo #02',
                 title: 'Vibrant Smiles',
                 subtitle: 'The heart & soul of every gathering',
-                fallbackTitle: 'Vibrant Smiles'
+                fallbackTitle: 'Vibrant Smiles',
+                chapter: 'Chapter II • Joy & Laughter',
+                pageNo: 'Page 02',
+                heading: 'Laughter That Echoes Forever',
+                quote: '“A single genuine smile of yours turns ordinary days into lifelong celebrations.”',
+                body: 'May your birthday on 25 November be overflowing with hearty laughter, effortless joy, and the company of people who truly value you. Keep spreading that unmistakable positive energy everywhere you go!',
+                note: '25 Nov • Pure Happiness'
             },
             {
                 src: './Dipan-3.png',
+                badge: 'Photo #03',
                 title: 'Unforgettable Moments',
                 subtitle: 'Golden memories captured in time',
-                fallbackTitle: 'Unforgettable Moments'
+                fallbackTitle: 'Unforgettable Moments',
+                chapter: 'Chapter III • Treasured Bond',
+                pageNo: 'Page 03',
+                heading: 'Memories Etched in Gold',
+                quote: '“Time may turn the calendar, yet the best memories stay bright forever.”',
+                body: 'From shared stories to quiet victories, every frame holds a piece of your journey. Wishing you a year ahead packed with proud milestones, good health, and peace of mind.',
+                note: '25 Nov • Timeless Bond'
             },
             {
                 src: './Dipan-4.png',
+                badge: 'Photo #04',
                 title: 'Golden Horizons',
                 subtitle: 'Stepping gracefully into a brilliant future',
-                fallbackTitle: 'Golden Horizons'
+                fallbackTitle: 'Golden Horizons',
+                chapter: 'Chapter IV • New Dawn',
+                pageNo: 'Page 04',
+                heading: 'Stepping Into Your Brightest Year',
+                quote: '“Here is to new horizons, bold steps, and a year where fortune walks beside you.”',
+                body: 'Happy Birthday once again, Dipan! May this 25 November mark the beginning of your greatest chapter yet—filled with success, adventure, and endless reasons to celebrate.',
+                note: '25 Nov • Future Ahead'
             }
         ];
 
@@ -1050,7 +1192,6 @@ mask-composite: exclude;
 
         function getNextNov25Date() {
             const now = new Date();
-            // November is month index 10, Day 25 at 00:00:00
             let candidate = new Date(now.getFullYear(), 10, 25, 0, 0, 0, 0);
             if (now.getTime() > candidate.getTime()) {
                 candidate = new Date(now.getFullYear() + 1, 10, 25, 0, 0, 0, 0);
@@ -1114,6 +1255,23 @@ mask-composite: exclude;
                 audioCtx.resume();
             }
             return audioCtx;
+        }
+
+        function playPageFlipSound() {
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(320, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(520, ctx.currentTime + 0.14);
+                gain.gain.setValueAtTime(0.09, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.14);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.14);
+            } catch (e) {}
         }
 
         function playSwitchClickSound() {
@@ -1241,6 +1399,100 @@ mask-composite: exclude;
                 resizeFlowerCanvas();
             });
 
+            // OPEN BOOK PAGE FOLD & FLIP ENGINE
+            let currentBookPage = 0;
+            const turningSheet = document.getElementById('turningSheet');
+            const bookDots = document.getElementById('bookDots');
+            const bookPageIndicator = document.getElementById('bookPageIndicator');
+            const leftPageChapter = document.getElementById('leftPageChapter');
+            const leftPageNum = document.getElementById('leftPageNum');
+            const leftPageHeading = document.getElementById('leftPageHeading');
+            const leftPageQuote = document.getElementById('leftPageQuote');
+            const leftPageBody = document.getElementById('leftPageBody');
+            const leftPageNote = document.getElementById('leftPageNote');
+            const bookPageImg = document.getElementById('bookPageImg');
+            const bookPhotoBadge = document.getElementById('bookPhotoBadge');
+            const bookPhotoTitle = document.getElementById('bookPhotoTitle');
+            const rightPageNum = document.getElementById('rightPageNum');
+
+            function renderBookPage(index) {
+                const page = galleryData[index];
+                leftPageChapter.textContent = page.chapter;
+                leftPageNum.textContent = page.pageNo;
+                leftPageHeading.textContent = page.heading;
+                leftPageQuote.textContent = page.quote;
+                leftPageBody.textContent = page.body;
+                leftPageNote.textContent = page.note;
+
+                bookPageImg.onerror = function() {
+                    renderFallbackSVG(this, page.fallbackTitle, page.src);
+                };
+                bookPageImg.src = page.src;
+                bookPageImg.alt = page.title;
+                bookPhotoBadge.textContent = page.badge;
+                bookPhotoTitle.textContent = page.title;
+
+                rightPageNum.textContent = `${index + 1} / ${galleryData.length}`;
+                bookPageIndicator.textContent = `Page ${index + 1} of ${galleryData.length}`;
+
+                bookDots.innerHTML = '';
+                galleryData.forEach((_, idx) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = idx === index
+                        ? 'w-6 h-2.5 rounded-full bg-gold-400 transition-all cursor-pointer'
+                        : 'w-2.5 h-2.5 rounded-full bg-gold-500/30 hover:bg-gold-400/60 transition-all cursor-pointer';
+                    dot.setAttribute('aria-label', `Go to page ${idx + 1}`);
+                    dot.addEventListener('click', () => flipBookTo(idx, idx >= currentBookPage ? 'next' : 'prev'));
+                    bookDots.appendChild(dot);
+                });
+            }
+
+            let isFlipping = false;
+            function flipBookTo(targetIndex, direction = 'next') {
+                if (isFlipping) return;
+                const normalized = (targetIndex + galleryData.length) % galleryData.length;
+                if (normalized === currentBookPage) return;
+
+                isFlipping = true;
+                playPageFlipSound();
+
+                const foldClass = direction === 'next' ? 'turn-forward' : 'turn-backward';
+                turningSheet.classList.remove('turn-forward', 'turn-backward');
+                void turningSheet.offsetWidth;
+                turningSheet.classList.add(foldClass);
+
+                setTimeout(() => {
+                    currentBookPage = normalized;
+                    renderBookPage(currentBookPage);
+                }, 380);
+
+                setTimeout(() => {
+                    turningSheet.classList.remove(foldClass);
+                    isFlipping = false;
+                }, 800);
+            }
+
+            renderBookPage(0);
+
+            document.getElementById('nextBookPageBtn').addEventListener('click', () => {
+                flipBookTo(currentBookPage + 1, 'next');
+            });
+
+            document.getElementById('prevBookPageBtn').addEventListener('click', () => {
+                flipBookTo(currentBookPage - 1, 'prev');
+            });
+
+            document.getElementById('cornerFoldTrigger').addEventListener('click', (e) => {
+                e.stopPropagation();
+                flipBookTo(currentBookPage + 1, 'next');
+            });
+
+            document.getElementById('bookPhotoFrame').addEventListener('click', () => {
+                openLightbox(currentBookPage);
+            });
+
+            // LAMP PULL-CHAIN & SILK RIBBON SEQUENCE (NO AUTO FLOWER SHOWER)
             const knotCurtain = document.getElementById('knotCurtain');
             const lampPullChain = document.getElementById('lampPullChain');
             const chainLinks = document.getElementById('chainLinks');
@@ -1301,7 +1553,6 @@ mask-composite: exclude;
                 isUnlocking = true;
 
                 knotCurtain.classList.add('untied');
-                triggerFlowerShower(130, false);
 
                 setTimeout(() => {
                     knotCurtain.classList.add('unlocked');
@@ -1314,8 +1565,9 @@ mask-composite: exclude;
                 unlockCelebration();
             });
 
+            // FLOATING FLOWER BASKET BUTTON -> TRIGGERS FLOWER SHOWER
             document.getElementById('flowerShowerBtn').addEventListener('click', () => {
-                triggerFlowerShower(140);
+                triggerFlowerShower(140, true);
             });
 
             document.getElementById('triggerNowBtn').addEventListener('click', () => {
@@ -1359,13 +1611,6 @@ mask-composite: exclude;
                 }
             });
 
-            document.querySelectorAll('.album-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const idx = parseInt(card.getAttribute('data-index'), 10);
-                    openLightbox(idx);
-                });
-            });
-
             document.getElementById('closeLightboxBtn').addEventListener('click', closeLightbox);
             document.getElementById('prevImgBtn').addEventListener('click', () => {
                 currentImgIdx = (currentImgIdx - 1 + galleryData.length) % galleryData.length;
@@ -1374,83 +1619,6 @@ mask-composite: exclude;
             document.getElementById('nextImgBtn').addEventListener('click', () => {
                 currentImgIdx = (currentImgIdx + 1) % galleryData.length;
                 openLightbox(currentImgIdx);
-            });
-
-            const galleryContainer = document.getElementById('galleryContainer');
-            const viewGridBtn = document.getElementById('viewGridBtn');
-            const view3dBtn = document.getElementById('view3dBtn');
-            const viewScrapbookBtn = document.getElementById('viewScrapbookBtn');
-
-            function resetActiveViewBtns() {
-                [viewGridBtn, view3dBtn, viewScrapbookBtn].forEach(btn => {
-                    btn.className = "px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-gold-300 hover:text-white transition-all";
-                });
-            }
-
-            viewGridBtn.addEventListener('click', () => {
-                resetActiveViewBtns();
-                viewGridBtn.className = "px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-gold-500 text-midnight shadow";
-                galleryContainer.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500";
-            });
-
-            view3dBtn.addEventListener('click', () => {
-                resetActiveViewBtns();
-                view3dBtn.className = "px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-gold-500 text-midnight shadow";
-                galleryContainer.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 [perspective:1000px] transition-all duration-500";
-                showToast("✨ 3D Showcase View activated");
-            });
-
-            viewScrapbookBtn.addEventListener('click', () => {
-                resetActiveViewBtns();
-                viewScrapbookBtn.className = "px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-gold-500 text-midnight shadow";
-                galleryContainer.className = "grid grid-cols-1 sm:grid-cols-2 gap-8 transition-all duration-500";
-                showToast("📖 Scrapbook View activated");
-            });
-
-            const wishForm = document.getElementById('wishForm');
-            const WHATSAPP_NUMBER = '91XXXXXXXXXX'; // <-- এখানে আপনার WhatsApp নম্বর দিন
-
-            wishForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('senderName').value.trim();
-                const relation = document.getElementById('wishRelation').value.trim() || 'Well Wisher';
-                const text = document.getElementById('wishText').value.trim();
-
-                if (!name || !text) {
-                    showToast("⚠️ Please enter both your name and message", "❌");
-                    return;
-                }
-
-                const wishesGrid = document.getElementById('wishesGrid');
-                const newCard = document.createElement('div');
-                newCard.className = "luxury-card rounded-xl p-5 border border-gold-500/40 transition";
-                newCard.innerHTML = `
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-full bg-gold-500/20 text-gold-300 flex items-center justify-center font-bold text-xs">
-                                ${name.charAt(0).toUpperCase()}
-                            </div>
-                            <div>
-                                <h5 class="text-sm font-bold text-white">${name}</h5>
-                                <span class="text-[10px] text-gold-400/80">${relation}</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-sparkles text-gold-400 text-xs"></i>
-                    </div>
-                    <p class="text-xs text-gray-200 leading-relaxed font-sans">
-                        "${text}"
-                    </p>
-                `;
-
-                wishesGrid.prepend(newCard);
-
-                const waMessage = `🎉 *Birthday Wish for Dipan (Nov 25)* 🎉\n\n*From:* ${name} (${relation})\n*Message:* ${text}`;
-                const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
-                window.open(waUrl, '_blank', 'noopener,noreferrer');
-
-                wishForm.reset();
-                triggerFlowerShower(60);
-                showToast("📲 Opening WhatsApp with your wish!");
             });
         });
     </script>
