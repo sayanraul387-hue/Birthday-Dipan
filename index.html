@@ -373,12 +373,12 @@
         }
 
         /* Gold Gradient Text */
-        .gold-text-gradient {
-            background: linear-gradient(135deg, #FFFDF9 0%, #F5E6AD 25%, #D4AF37 60%, #AA771C 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+      .gold-text-gradient {
+    background: linear-gradient(135deg, #FFFDF9 0%, #F5E6AD 25%, #D4AF37 60%, #AA771C 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
         /* Glassmorphism Luxury Border */
         .luxury-card {
             background: rgba(20, 18, 29, 0.65);
@@ -404,10 +404,10 @@
             border-radius: inherit;
             padding: 2px;
             background: linear-gradient(135deg, #D4AF37, transparent 40%, transparent 60%, #F5E6AD);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
         }
 
         @keyframes pulseGlow {
